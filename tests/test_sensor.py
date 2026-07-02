@@ -10,7 +10,7 @@ import pytest
 from homeassistant.core import HomeAssistant
 from homeassistant.setup import async_setup_component
 from pytest_homeassistant_custom_component.common import MockConfigEntry
-from SolixBLE import LightStatus, PortStatus
+from SolixBLE import ChargingStatus, LightStatus, PortStatus
 
 from custom_components.solix_ble.const import DOMAIN
 
@@ -24,6 +24,8 @@ from . import (
     MOCK_C1000_DETAILS,
     MOCK_C1000_TEST_DATA,
     MOCK_C1000G2_DETAILS,
+    MOCK_S2000_DETAILS,
+    MOCK_S2000_TEST_DATA,
     MOCK_F2000_DETAILS,
     MOCK_F3800_DETAILS,
     MOCK_UNKNOWN_DETAILS,
@@ -61,6 +63,13 @@ from . import (
             "C1000G2",
             {"temperature": 27},
             id="c1000G2",
+        ),
+        pytest.param(
+            MOCK_S2000_DETAILS,
+            MOCK_S2000_DETAILS,
+            "S2000",
+            MOCK_S2000_TEST_DATA,
+            id="s2000",
         ),
         pytest.param(
             MOCK_F2000_DETAILS,
@@ -155,7 +164,7 @@ async def test_sensor_entities(
 
             # If the value is a port or light status then we format
             # its name to get the correct value that HA will have
-            elif type(value) is PortStatus or type(value) is LightStatus:
+            elif type(value) in [ChargingStatus, PortStatus, LightStatus]:
                 value = value.name.capitalize().replace("_", " ")
 
             else:

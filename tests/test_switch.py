@@ -27,6 +27,7 @@ from . import (
     MOCK_C300_DETAILS,
     MOCK_C800_DETAILS,
     MOCK_C1000_DETAILS,
+    MOCK_S2000_DETAILS,
     MockDeviceDetails,
 )
 
@@ -132,6 +133,17 @@ from . import (
             "turn_display_off",
             None,
             id="c1000_display",
+        ),
+        pytest.param(
+            MOCK_S2000_DETAILS,
+            MOCK_S2000_DETAILS,
+            "S2000",
+            "ac_output",
+            "ac_output",
+            "turn_ac_on",
+            "turn_ac_off",
+            (PortStatus.NOT_CONNECTED, PortStatus.OUTPUT, PortStatus.NOT_CONNECTED),
+            id="s2000_ac",
         ),
     ],
     indirect=["mock_config_entry"],

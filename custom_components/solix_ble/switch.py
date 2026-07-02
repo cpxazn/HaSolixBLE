@@ -9,7 +9,7 @@ from homeassistant.components.switch import SwitchEntity
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.device_registry import CONNECTION_BLUETOOTH, DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from SolixBLE import C300, C800, C1000, PortStatus, SolixBLEDevice
+from SolixBLE import C300, C800, C1000, S2000, PortStatus, SolixBLEDevice
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -29,7 +29,7 @@ async def async_setup_entry(
     switches: list[SolixSwitchEntity] = []
 
     # Support for AC output switch with status
-    if type(device) in [C300, C800, C1000]:
+    if type(device) in [C300, C800, C1000, S2000]:
         switches.append(
             SolixSwitchEntity(
                 device,

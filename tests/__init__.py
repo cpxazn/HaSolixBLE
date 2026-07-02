@@ -6,7 +6,7 @@ from typing import Any
 
 from bleak.backends.scanner import AdvertisementData, BLEDevice
 from habluetooth import BluetoothServiceInfoBleak
-from SolixBLE import LightStatus, PortStatus
+from SolixBLE import ChargingStatus, LightStatus, PortStatus
 
 from custom_components.solix_ble.const import Models
 
@@ -138,6 +138,13 @@ MOCK_C1000G2_DETAILS = MockDeviceDetails(
     addr="AA:BB:CC:DD:EE:03",
     model_string="C1000(X) Gen 2",
     model_class=Models.C1000G2,
+)
+
+MOCK_S2000_DETAILS = MockDeviceDetails(
+    name="Anker SOLIX S2000",
+    addr="AA:BB:CC:DD:EE:05",
+    model_string="S2000",
+    model_class=Models.S2000,
 )
 
 MOCK_F2000_DETAILS = MockDeviceDetails(
@@ -273,6 +280,22 @@ MOCK_C1000_TEST_DATA = {
     # "solar_port": ("status_solar", PortStatus.INPUT),
     "ac_output": ("status_ac_out", PortStatus.NOT_CONNECTED),
     "battery_percentage": 13,
+}
+
+MOCK_S2000_TEST_DATA = {
+    "charging_status": ("charging_status", ChargingStatus.CHARGING),
+    "battery_percentage": 88,
+    "battery_health": 100,
+    "temperature": 38,
+    "power_in": ("total_power_in", 1124),
+    "power_out": ("total_power_out", 30),
+    "ac_power_in": 1124,
+    "ac_power_out": 30,
+    "ac_output": ("status_ac_out", PortStatus.OUTPUT),
+    "solar_power_in": 0,
+    "usb_power": 10,
+    "usb_output": ("status_usb", PortStatus.OUTPUT),
+    "serial_number": "APCDPTC0G21500240",
 }
 
 MOCK_UNKNOWN_TEST_DATA = {}

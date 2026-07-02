@@ -27,6 +27,7 @@ class Models(Enum):
     C800 = "C800(X)"
     C1000 = "C1000(X)"
     C1000G2 = "C1000(X) Gen 2"
+    S2000 = "S2000"
     F2000 = "F2000 (767)"
     F3800 = "F3800"
     UNKNOWN = "Unknown"
