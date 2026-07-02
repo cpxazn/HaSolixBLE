@@ -32,6 +32,7 @@ This lists the supported devices, more information on what features are supporte
 - C800(X)
 - C1000(X)
 - C1000(X) Gen 2
+- S2000
 - F2000
 - F3800
 - Anker Prime 250w Charger
